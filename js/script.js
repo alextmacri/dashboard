@@ -1,18 +1,26 @@
 // making the search bar form functionality
 document.getElementById('search-form').addEventListener('submit', (form) => {
     form.preventDefault();
-    let str = document.getElementById('search-txt').value
+    let str = document.getElementById('search-txt').value;
 
-    if (/\S/.test(str)) {                                               // checks for non-whitespace characters
-        if (/[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})/.test(str)) {        // checks for url
-            if (/htt.{1,}:\/\//.test(str)) {                            // checks for http:// or https://
-                window.location.href = str;
-            } else {
-                window.location.href = `https://${str}`;
-            }
-        } else {                                                        // non-url, will duckduckgo search
-            window.location.href = `https://duckduckgo.com/?q=${str}`;
+    var urlExpression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+    var httpExpression = /https?:\/\/(www\.)?/;
+
+    var urlRegex = new RegExp(urlExpression);
+    var httpRegex = new RegExp(httpExpression);
+    var whitespaceRegex = new RegExp(/\s/);
+    var nonWhitespaceRegex = new RegExp(/\S/);
+
+    // checks for url or search query
+    if (str.match(urlRegex) && !str.match(whitespaceRegex)) {
+        if (str.match(httpRegex)) {
+            window.location.href = str;
+        } else {
+            window.location.href = `https://${str}`;
         }
+    }
+    else if (str.match(nonWhitespaceRegex)) {
+        window.location.href = `https://duckduckgo.com/?q=${str}`;
     }
 });
 
