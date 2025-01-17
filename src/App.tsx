@@ -2,7 +2,7 @@ import Blobs from './components/Blobs';
 import StaticOverlay from './components/StaticOverlay';
 import SearchBar from './components/SearchBar';
 
-// TODO: Make the background effect go from top-bottom instead of left-right
+// TODO: Make the background effect go from top-bottom instead of left-right for smaller screens (mobile)
 
 function App() {
 	const blobColors = ['#B33630', '#AD4C45', '#AA736E', '#6D9293', '#127277'];
