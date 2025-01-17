@@ -1,35 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Blobs from './components/Blobs';
+import StaticOverlay from './components/StaticOverlay';
+import SearchBar from './components/SearchBar';
+
+// TODO: Make the background effect go from top-bottom instead of left-right
 
 function App() {
-  const [count, setCount] = useState(0)
+	const blobColors = ['#B33630', '#AD4C45', '#AA736E', '#6D9293', '#127277'];
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	return (
+		<div className="h-screen w-screen -z-10 flex justify-center items-center bg-gradient-to-r from-[#5c1c19] via-black to-[#062e30]">
+			<Blobs count={5} colors={blobColors} />
+			<StaticOverlay />
+			<SearchBar />
+		</div>
+	)
 }
 
-export default App
+export default App;
