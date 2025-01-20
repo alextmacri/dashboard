@@ -19,12 +19,13 @@ const SearchBar: React.FC = () => {
 
     return (
         <div className="w-3/5 flex justify-center items-center">
-            <form onSubmit={handleSearch} className="w-full p-4 opacity-90 bg-black text-white rounded-xl flex">
+            <form onSubmit={handleSearch} className="w-full p-4 z-10 bg-black text-neutral-50 rounded-xl flex">
                 <input
                     type="text"
                     name="search"
                     placeholder="Search..."
-                    className="flex-grow h-12 px-4 bg-transparent text-2xl focus:outline-none"
+                    className="flex-grow h-12 px-4 bg-transparent text-2xl focus:outline-none placeholder-neutral-500"
+                    autoFocus
                 />
             </form>
         </div>
